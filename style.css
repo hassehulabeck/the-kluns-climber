@@ -1,0 +1,9 @@
+body>div {
+    width: 66vw;
+    margin: 0 auto;
+    border: thin solid pink;
+}
+
+img {
+    width: 100px;
+}
