@@ -17,7 +17,8 @@ let foes = [{
 ];
 
 let getAvatar = function (foe) {
-    return `https://avatars.dicebear.com/v2/gridy/${foe.name}.svg`;
+    let name = foes[foe].name;
+    return `https://avatars.dicebear.com/v2/gridy/${name}.svg`;
 }
 let getWeapon = function () {
     // Random
