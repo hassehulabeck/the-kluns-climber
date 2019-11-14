@@ -1,3 +1,7 @@
+import {
+    weapons
+} from './items.mjs';
+
 let foes = [{
         name: "Ace the Counter",
         level: 0
@@ -12,16 +16,16 @@ let foes = [{
     }
 ];
 
-let getFoeAvatar = function (foe) {
+let getAvatar = function (foe) {
     return `https://avatars.dicebear.com/v2/gridy/${foe.name}.svg`;
 }
-let getFoeWeapon = function () {
+let getWeapon = function () {
     // Random
     let slump = Math.floor(Math.random() * weapons.length);
     return slump;
 }
 export {
     foes,
-    getFoeAvatar,
-    getFoeWeapon
+    getAvatar,
+    getWeapon
 };
