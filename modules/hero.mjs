@@ -10,17 +10,14 @@ let hero = {
 function moveHero(direction) {
     hero.level += direction;
     let heroImg = document.querySelector("img#hero");
-    for (let i = 1; i > 0; i = i - 0.05) {
-        fadeHero(heroImg, i);
+    for (let i = 0; i <= 100; i += 5) {
+        setTimeout(() => {
+            heroImg.style.opacity = 1 - (i / 100);
+
+        }, 10 * i)
     }
 }
 
-function fadeHero(heroImg, i) {
-    setTimeout(function () {
-        heroImg.style.opacity = i;
-        console.log(i)
-    }, 1000);
-}
 
 export {
     hero,
