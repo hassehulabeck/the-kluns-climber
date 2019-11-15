@@ -3,6 +3,8 @@ import * as Hero from './modules/hero.mjs';
 import * as Item from './modules/items.mjs';
 import levels from './modules/levels.mjs';
 
+var duelInProgress = false;
+
 document.addEventListener("DOMContentLoaded", () => {
     let playArea = document.getElementById("playArea");
 
@@ -35,6 +37,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Get user input
 window.addEventListener("keypress", (e) => {
+    // Om matchen inte är igång, starta den.
+    if (!duelInProgress) {
+        duelInProgress = true;
+    }
+
     if (e.key == "s" || e.key == "S")
         Hero.hero.weapon = 0;
     if (e.key == "x" || e.key == "X")
@@ -60,6 +67,18 @@ function updateMatch(foeId) {
     let info = document.querySelector("#info p");
     info.innerHTML = Foe.foes[foeId].name + ": " + Foe.foes[foeId].kluns;
     info.innerHTML += "<p>" + Hero.hero.name + ": " + Hero.hero.kluns;
+
+    if (!duelInProgress) {
+        // matchen är slut.
+        if (Hero.hero.kluns > Foe.foes[foeId].kluns)
+            Hero.moveHero(-1);
+        else
+            Hero.moveHero(1);
+
+        // Reset kluns score.
+        Foe.foes[foeId].kluns = 0;
+        Hero.hero.kluns = 0;
+    }
 }
 
 
@@ -78,6 +97,10 @@ function checkKluns(foeId) {
     } else {
         console.log("HERO: " + Foe.foes[foeId].weapon + " - " + Hero.hero.weapon)
         Hero.hero.kluns++;
+    }
+
+    if (Hero.hero.kluns == 5 || Foe.foes[foeId].kluns == 5) {
+        duelInProgress = false;
     }
 }
 

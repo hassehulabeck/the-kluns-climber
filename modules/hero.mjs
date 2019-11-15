@@ -1,14 +1,25 @@
+import levels from "./levels.mjs";
+
 let hero = {
     name: "Tristan",
     health: 100,
     avatar: "https://avatars.dicebear.com/v2/bottts/tristan.svg",
     weapon: null,
     level: 3,
-    kluns: null
+    kluns: 0
 }
 
 function moveHero(direction) {
     hero.level += direction;
+
+    // Hantera gränsvärden.
+    if (hero.level < 0)
+        hero.level = 0;
+    if (hero.level > levels.length - 1) {
+        hero.level = levels.length - 1;
+        console.log("Game over")
+    }
+
     let heroImg = document.querySelector("img#hero");
     for (let i = 0; i <= 100; i += 5) {
         setTimeout(() => {
