@@ -4,23 +4,28 @@ import {
 
 let foes = [{
         name: "Ace the Counter",
-        weapon: null
+        weapon: null,
+        kluns: null
     },
     {
         name: "Gerda Anti",
-        weapon: null
+        weapon: null,
+        kluns: null
     },
     {
         name: "Xerxes IV",
-        weapon: null
+        weapon: null,
+        kluns: null
     },
     {
         name: "Rune Holtab",
-        weapon: null
+        weapon: null,
+        kluns: null
     },
     {
         name: "Doris Delete",
-        weapon: null
+        weapon: null,
+        kluns: null
     }
 ];
 

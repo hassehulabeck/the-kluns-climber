@@ -48,20 +48,38 @@ window.addEventListener("keypress", (e) => {
     Foe.setWeapon(foeId);
 
     // Kontrollera klunsen
-    checkKluns(foeId);
+    if (Foe.foes[foeId].kluns < 5 && Hero.hero.kluns < 5) {
+        checkKluns(foeId);
+        updateMatch(foeId);
+    } else {
+        console.log("Någon har vunnit");
+    }
 })
+
+function updateMatch(foeId) {
+    let info = document.querySelector("#info p");
+    info.innerHTML = Foe.foes[foeId].name + ": " + Foe.foes[foeId].kluns;
+    info.innerHTML += "<p>" + Hero.hero.name + ": " + Hero.hero.kluns;
+}
 
 
 function checkKluns(foeId) {
 
     // Lika?
-    if (Foe.foes[foeId].weapon == Hero.hero.weapon)
+    if (Foe.foes[foeId].weapon == Hero.hero.weapon) {
         console.log("LIKA: " + Foe.foes[foeId].weapon + " - " + Hero.hero.weapon)
+    }
 
     // Vinner Foe?
     else if ((Hero.hero.weapon == Foe.foes[foeId].weapon + 1) ||
-        (Hero.hero.weapon == 0 && Foe.foes[foeId].weapon == 2))
+        (Hero.hero.weapon == 0 && Foe.foes[foeId].weapon == 2)) {
         console.log("FOE: " + Foe.foes[foeId].weapon + " - " + Hero.hero.weapon)
-    else
+        Foe.foes[foeId].kluns++;
+    } else {
         console.log("HERO: " + Foe.foes[foeId].weapon + " - " + Hero.hero.weapon)
+        Hero.hero.kluns++;
+    }
 }
+
+// Testa heroMoving.
+window.Hero = Hero;
