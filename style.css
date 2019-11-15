@@ -1,22 +1,84 @@
-body>div {
-    width: 66vw;
-    margin: 0 auto;
-    border: thin solid pink;
+body {
+    background: black;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+main div {
+    color: white;
+}
+
+#title {
+    color: orange;
+    flex: 0 1 25%;
+    font-family: 'Righteous', cursive;
+}
+
+#playArea {
+    flex: 0 1 50%;
+    margin: 2em auto;
+}
+
+#info {
+    flex: 0 1 25%;
+    font-family: 'Righteous',
+        cursive;
+    padding-left: 1em;
+}
+
+div h1 {
+    font-size: 3rem;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    padding: 1em 0;
+    color: gainsboro;
+    width: 100%;
+    text-align: center;
+}
+
+footer a,
+footer a:visited {
+    color: silver;
 }
 
 section {
-    background-color: rgba(200, 100, 30, .2);
+    background-color: rgba(200, 100, 30, 1);
 }
 
 section:nth-child(2) {
-    background-color: rgba(200, 100, 30, .5);
+    background-color: rgba(200, 100, 30, .8);
+}
+
+section:nth-child(3) {
+    background-color: rgba(200, 100, 30, .6);
+}
+
+section:nth-child(4) {
+    background-color: rgba(200, 100, 30, .4);
 }
 
 section:last-child {
-    background-color: rgba(200, 100, 30, .8);
+    background-color: rgba(200, 100, 30, .2);
 }
 
 
 img {
     width: 100px;
+}
+
+img#hero {
+    margin-left: 30%;
+}
+
+@media all and (max-width: 800px) {
+    body>div {
+        width: 75vw;
+        margin: 2em auto;
+    }
 }

@@ -4,15 +4,18 @@ import {
 
 let foes = [{
         name: "Ace the Counter",
-        level: 0
     },
     {
         name: "Gerda Anti",
-        level: 1
     },
     {
         name: "Xerxes IV",
-        level: 2
+    },
+    {
+        name: "Rune Holta",
+    },
+    {
+        name: "Doris Delete"
     }
 ];
 

@@ -6,6 +6,12 @@ let levels = [{
 
     }, {
         foe: 2
+    },
+    {
+        foe: 4
+    },
+    {
+        foe: 3
     }
 ];
 
