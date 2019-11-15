@@ -5,6 +5,8 @@ import levels from './modules/levels.mjs';
 
 var duelInProgress = false;
 var gameOver = false;
+var recentScore = 0;
+var highscore = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
     let playArea = document.getElementById("playArea");
@@ -73,6 +75,7 @@ function updateMatch(foeId) {
 
     if (gameOver) {
         info.innerHTML += "<h2>Game Over"
+        checkScores();
     }
 
     if (!duelInProgress) {
@@ -82,6 +85,7 @@ function updateMatch(foeId) {
             Hero.hero.score += 5 * (5 - Hero.hero.level)
         } else {
             Hero.moveHero(1);
+
             let klunsDiff = Foe.foes[foeId].kluns - Hero.hero.kluns;
             Hero.hero.score -= (klunsDiff + (5 - Hero.hero.level));
         }
@@ -91,6 +95,19 @@ function updateMatch(foeId) {
         Hero.hero.kluns = 0;
     }
 
+}
+
+
+function checkScores() {
+    recentScore = Hero.hero.score;
+    if (recentScore > highscore) {
+        highscore = recentScore;
+    }
+    let info = document.querySelector("#info p");
+    setTimeout(() => {
+        info.innerHTML = "<p>Highscore: " + highscore;
+        info.innerHTML = "<p>Recent score: " + recentscore;
+    }, 1300);
 }
 
 
@@ -119,6 +136,3 @@ function checkKluns(foeId) {
     if (Hero.hero.health <= 0)
         gameOver = true;
 }
-
-// Testa heroMoving.
-window.Hero = Hero;

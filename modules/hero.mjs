@@ -11,6 +11,7 @@ let hero = {
 }
 
 function moveHero(direction) {
+
     hero.level += direction;
 
     // Hantera gränsvärden.
@@ -18,7 +19,7 @@ function moveHero(direction) {
         hero.level = 0;
     if (hero.level > levels.length - 1) {
         hero.level = levels.length - 1;
-        console.log("Game over")
+        hero.health = 0;
     }
 
     let heroImg = document.querySelector("img#hero");
