@@ -4,6 +4,7 @@ import * as Item from './modules/items.mjs';
 import levels from './modules/levels.mjs';
 
 var duelInProgress = false;
+var gameOver = false;
 
 document.addEventListener("DOMContentLoaded", () => {
     let playArea = document.getElementById("playArea");
@@ -67,18 +68,29 @@ function updateMatch(foeId) {
     let info = document.querySelector("#info p");
     info.innerHTML = Foe.foes[foeId].name + ": " + Foe.foes[foeId].kluns;
     info.innerHTML += "<p>" + Hero.hero.name + ": " + Hero.hero.kluns;
+    info.innerHTML += "<p>Health: " + Hero.hero.health;
+    info.innerHTML += "<p>Score: " + Hero.hero.score;
+
+    if (gameOver) {
+        info.innerHTML += "<h2>Game Over"
+    }
 
     if (!duelInProgress) {
         // matchen är slut.
-        if (Hero.hero.kluns > Foe.foes[foeId].kluns)
+        if (Hero.hero.kluns > Foe.foes[foeId].kluns) {
             Hero.moveHero(-1);
-        else
+            Hero.hero.score += 5 * (5 - Hero.hero.level)
+        } else {
             Hero.moveHero(1);
+            let klunsDiff = Foe.foes[foeId].kluns - Hero.hero.kluns;
+            Hero.hero.score -= (klunsDiff + (5 - Hero.hero.level));
+        }
 
         // Reset kluns score.
         Foe.foes[foeId].kluns = 0;
         Hero.hero.kluns = 0;
     }
+
 }
 
 
@@ -94,6 +106,7 @@ function checkKluns(foeId) {
         (Hero.hero.weapon == 0 && Foe.foes[foeId].weapon == 2)) {
         console.log("FOE: " + Foe.foes[foeId].weapon + " - " + Hero.hero.weapon)
         Foe.foes[foeId].kluns++;
+        Hero.hero.health--;
     } else {
         console.log("HERO: " + Foe.foes[foeId].weapon + " - " + Hero.hero.weapon)
         Hero.hero.kluns++;
@@ -102,6 +115,9 @@ function checkKluns(foeId) {
     if (Hero.hero.kluns == 5 || Foe.foes[foeId].kluns == 5) {
         duelInProgress = false;
     }
+
+    if (Hero.hero.health <= 0)
+        gameOver = true;
 }
 
 // Testa heroMoving.

@@ -6,7 +6,8 @@ let hero = {
     avatar: "https://avatars.dicebear.com/v2/bottts/tristan.svg",
     weapon: null,
     level: 3,
-    kluns: 0
+    kluns: 0,
+    score: 0
 }
 
 function moveHero(direction) {
