@@ -60,7 +60,7 @@ function checkKluns(foeId) {
 
     // Vinner Foe?
     else if ((Hero.hero.weapon == Foe.foes[foeId].weapon + 1) ||
-        (Hero.hero.weapon == 2 && Foe.foes[foeId].weapon == 1))
+        (Hero.hero.weapon == 0 && Foe.foes[foeId].weapon == 2))
         console.log("FOE: " + Foe.foes[foeId].weapon + " - " + Hero.hero.weapon)
     else
         console.log("HERO: " + Foe.foes[foeId].weapon + " - " + Hero.hero.weapon)
