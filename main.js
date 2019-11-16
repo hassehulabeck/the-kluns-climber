@@ -150,7 +150,7 @@ function checkKluns(foeId) {
         (Hero.hero.weapon == 0 && Foe.foes[foeId].weapon == 2)) {
         console.log("FOE: " + Foe.foes[foeId].weapon + " - " + Hero.hero.weapon)
         Foe.foes[foeId].kluns++;
-        Hero.hero.health--;
+        Hero.hero.health -= (5 - Hero.hero.level) * 1;
     } else {
         console.log("HERO: " + Foe.foes[foeId].weapon + " - " + Hero.hero.weapon)
         Hero.hero.kluns++;
