@@ -8,7 +8,9 @@ var gameOver = false;
 var recentScore = 0;
 var highscore = 0;
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", startGame)
+
+function startGame() {
     let playArea = document.getElementById("playArea");
 
     // Rendera levels
@@ -35,11 +37,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
     });
-})
+}
 
 
 // Get user input
-window.addEventListener("keypress", (e) => {
+window.addEventListener("keypress", listen);
+
+function listen(e) {
     // Om matchen inte är igång, starta den.
     if (!duelInProgress) {
         duelInProgress = true;
@@ -64,7 +68,7 @@ window.addEventListener("keypress", (e) => {
     } else {
         console.log("Någon har vunnit");
     }
-})
+}
 
 function updateMatch(foeId) {
     let info = document.querySelector("#info p");
@@ -75,6 +79,7 @@ function updateMatch(foeId) {
 
     if (gameOver) {
         info.innerHTML += "<h2>Game Over"
+        window.removeEventListener("keypress", listen);
         checkScores();
     }
 
@@ -106,7 +111,7 @@ function checkScores() {
     let info = document.querySelector("#info p");
     setTimeout(() => {
         info.innerHTML = "<p>Highscore: " + highscore;
-        info.innerHTML = "<p>Recent score: " + recentscore;
+        info.innerHTML += "<p>Recent score: " + recentScore;
     }, 1300);
 }
 
