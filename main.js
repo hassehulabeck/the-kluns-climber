@@ -12,8 +12,20 @@ let button;
 document.addEventListener("DOMContentLoaded", startGame)
 
 function startGame() {
+    console.log("start");
     let playArea = document.getElementById("playArea");
+    playArea.innerHTML = "";
+
+    // Check start button
     button = document.getElementById("start");
+
+    // Reset values.
+    Hero.hero.health = Hero.hero.startHealth;
+    Hero.hero.level = levels.length - 2; // One below bottom level.
+    Hero.hero.score = 0;
+    gameOver = false;
+    duelInProgress = true;
+
 
     // Rendera levels
     levels.forEach((level, index) => {
@@ -39,14 +51,15 @@ function startGame() {
 
         }
     });
+    // Get user input
+    window.addEventListener("keypress", listen);
+
 }
 
-// Check start button
-button.addEventListener("click", startGame);
 
 
-// Get user input
-window.addEventListener("keypress", listen);
+
+
 
 function listen(e) {
     // Om matchen inte är igång, starta den.
@@ -111,6 +124,7 @@ function updateMatch(foeId) {
 
 
 function checkScores() {
+    button.addEventListener("click", startGame);
     recentScore = Hero.hero.score;
     if (recentScore > highscore) {
         highscore = recentScore;

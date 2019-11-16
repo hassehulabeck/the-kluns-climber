@@ -30,7 +30,7 @@ main div {
 }
 
 .noShow {
-    display: hidden;
+    display: none;
 }
 
 div h1 {

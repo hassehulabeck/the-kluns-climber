@@ -2,7 +2,8 @@ import levels from "./levels.mjs";
 
 let hero = {
     name: "Tristan",
-    health: 10,
+    health: 20,
+    startHealth: 20,
     avatar: "https://avatars.dicebear.com/v2/bottts/tristan.svg",
     weapon: null,
     level: 3,
