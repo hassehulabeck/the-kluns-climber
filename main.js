@@ -7,11 +7,13 @@ var duelInProgress = false;
 var gameOver = false;
 var recentScore = 0;
 var highscore = 0;
+let button;
 
 document.addEventListener("DOMContentLoaded", startGame)
 
 function startGame() {
     let playArea = document.getElementById("playArea");
+    button = document.getElementById("start");
 
     // Rendera levels
     levels.forEach((level, index) => {
@@ -47,6 +49,7 @@ function listen(e) {
     // Om matchen inte är igång, starta den.
     if (!duelInProgress) {
         duelInProgress = true;
+        button.classList.add("noShow");
     }
 
     if (e.key == "s" || e.key == "S")
@@ -81,6 +84,7 @@ function updateMatch(foeId) {
         info.innerHTML += "<h2>Game Over"
         window.removeEventListener("keypress", listen);
         checkScores();
+
     }
 
     if (!duelInProgress) {
@@ -112,6 +116,7 @@ function checkScores() {
     setTimeout(() => {
         info.innerHTML = "<p>Highscore: " + highscore;
         info.innerHTML += "<p>Recent score: " + recentScore;
+        button.classList.remove("noShow");
     }, 1300);
 }
 

@@ -29,6 +29,10 @@ main div {
     padding-left: 1em;
 }
 
+.noShow {
+    display: hidden;
+}
+
 div h1 {
     font-size: 3rem;
 }
