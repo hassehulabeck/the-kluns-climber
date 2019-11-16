@@ -41,6 +41,9 @@ function startGame() {
     });
 }
 
+// Check start button
+button.addEventListener("click", startGame);
+
 
 // Get user input
 window.addEventListener("keypress", listen);
