@@ -5,9 +5,27 @@ import levels from './modules/levels.mjs';
 
 var duelInProgress = false;
 var gameOver = false;
+var recentScore = 0;
+var highscore = 0;
+let button;
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", startGame)
+
+function startGame() {
+    console.log("start");
     let playArea = document.getElementById("playArea");
+    playArea.innerHTML = "";
+
+    // Check start button
+    button = document.getElementById("start");
+
+    // Reset values.
+    Hero.hero.health = Hero.hero.startHealth;
+    Hero.hero.level = levels.length - 2; // One below bottom level.
+    Hero.hero.score = 0;
+    gameOver = false;
+    duelInProgress = true;
+
 
     // Rendera levels
     levels.forEach((level, index) => {
@@ -33,14 +51,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
     });
-})
+    // Get user input
+    window.addEventListener("keypress", listen);
+
+}
 
 
-// Get user input
-window.addEventListener("keypress", (e) => {
+
+
+
+
+function listen(e) {
     // Om matchen inte är igång, starta den.
     if (!duelInProgress) {
         duelInProgress = true;
+        button.classList.add("noShow");
     }
 
     if (e.key == "s" || e.key == "S")
@@ -62,7 +87,7 @@ window.addEventListener("keypress", (e) => {
     } else {
         console.log("Någon har vunnit");
     }
-})
+}
 
 function updateMatch(foeId) {
     let info = document.querySelector("#info p");
@@ -73,6 +98,9 @@ function updateMatch(foeId) {
 
     if (gameOver) {
         info.innerHTML += "<h2>Game Over"
+        window.removeEventListener("keypress", listen);
+        checkScores();
+
     }
 
     if (!duelInProgress) {
@@ -82,6 +110,7 @@ function updateMatch(foeId) {
             Hero.hero.score += 5 * (5 - Hero.hero.level)
         } else {
             Hero.moveHero(1);
+
             let klunsDiff = Foe.foes[foeId].kluns - Hero.hero.kluns;
             Hero.hero.score -= (klunsDiff + (5 - Hero.hero.level));
         }
@@ -91,6 +120,21 @@ function updateMatch(foeId) {
         Hero.hero.kluns = 0;
     }
 
+}
+
+
+function checkScores() {
+    button.addEventListener("click", startGame);
+    recentScore = Hero.hero.score;
+    if (recentScore > highscore) {
+        highscore = recentScore;
+    }
+    let info = document.querySelector("#info p");
+    setTimeout(() => {
+        info.innerHTML = "<p>Highscore: " + highscore;
+        info.innerHTML += "<p>Recent score: " + recentScore;
+        button.classList.remove("noShow");
+    }, 1300);
 }
 
 
