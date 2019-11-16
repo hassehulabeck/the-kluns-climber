@@ -40,9 +40,9 @@ function renderHero() {
     let sections = document.getElementsByTagName("section");
 
     let img = document.createElement("img");
-    img.setAttribute("src", Hero.hero.avatar);
-    img.setAttribute("alt", Hero.hero.name);
-    img.setAttribute("title", Hero.hero.name);
+    img.setAttribute("src", hero.avatar);
+    img.setAttribute("alt", hero.name);
+    img.setAttribute("title", hero.name);
     img.id = "hero";
     img.style.opacity = 0;
 
