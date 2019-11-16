@@ -119,6 +119,3 @@ function checkKluns(foeId) {
     if (Hero.hero.health <= 0)
         gameOver = true;
 }
-
-// Testa heroMoving.
-window.Hero = Hero;
