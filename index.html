@@ -1,33 +1,47 @@
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>The Kluns Climber</title>
-    <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link
+      href="https://fonts.googleapis.com/css?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script src="main.js" type="module"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <main>
-        <div id="title">
-            <h1>The Kluns climber</h1>
-            <p>Help Tristan to climb to the top by winning duels of Sten-sax-påse ("Klunsa") against the dreaded foes.
-            </p>
-            <p>Use keys S, X and P to choose (S)ten, sa(X) eller (P)åse.</p>
-            <p>Every duel is won by getting first to 5 wins. Win to advance, lose to fall back.</p>
-            <p>Game over when health is 0.</p>
-        </div>
-        <div id="playArea"></div>
-        <div id="info">
-            <h1>Info</h1>
-            <p></p>
-            <button class="noShow" id="start">Start new game</button>
-        </div>
+      <div id="title">
+        <h1>The Kluns climber</h1>
+        <p>
+          Help Tristan to climb to the top by winning duels of Sten-sax-påse
+          ("Klunsa") against the dreaded foes.
+        </p>
+        <p>Use keys S, X and P to choose (S)ten, sa(X) eller (P)åse.</p>
+        <p>
+          Every duel is won by getting first to 5 wins. Win to advance, lose to
+          fall back.
+        </p>
+        <p>Game over when health is 0.</p>
+      </div>
+      <section id="weapon-buttons">
+        <button id="rock">S</button>
+        <button id="scissors">X</button>
+        <button id="paper">P</button>
+      </section>
+      <div id="playArea"></div>
+      <div id="info">
+        <h1>Info</h1>
+        <p></p>
+        <button class="noShow" id="start">Start new game</button>
+      </div>
     </main>
-    <footer>This site uses avatars from <a href="https://avatars.dicebear.com/">avatars.dicebear.com</a></footer>
-</body>
-
+    <footer>
+      This site uses avatars from
+      <a href="https://avatars.dicebear.com/">avatars.dicebear.com</a>
+    </footer>
+  </body>
 </html>
