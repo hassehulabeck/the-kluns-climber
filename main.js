@@ -103,6 +103,7 @@ function updateMatch(foeId) {
   if (gameOver) {
     info.innerHTML += "<h2>Game Over";
     window.removeEventListener("keypress", listen);
+    window.removeEventListener("click", listen);
     checkScores();
   }
 

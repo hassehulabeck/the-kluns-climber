@@ -31,6 +31,9 @@ main div {
 .noShow {
   display: none;
 }
+.mobileonly {
+  display: none;
+}
 
 div h1 {
   font-size: 3rem;
@@ -89,7 +92,9 @@ img#hero {
   #title {
     flex: 0 1 auto;
   }
-
+  .mobileonly {
+    display: initial;
+  }
   #playArea,
   #info {
     flex: 100%;
