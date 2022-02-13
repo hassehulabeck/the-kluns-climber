@@ -24,7 +24,7 @@ function startGame() {
     Hero.hero.level = levels.length - 2; // One below bottom level.
     Hero.hero.score = 0;
     gameOver = false;
-    duelInProgress = true;
+    duelInProgress = false;
 
 
     // Rendera levels
@@ -68,24 +68,32 @@ function listen(e) {
         button.classList.add("noShow");
     }
 
-    if (e.key == "s" || e.key == "S")
+    if (e.key == "s" || e.key == "S") {
         Hero.hero.weapon = 0;
-    if (e.key == "x" || e.key == "X")
+        fight();
+    }
+    if (e.key == "x" || e.key == "X") {
         Hero.hero.weapon = 1;
-    if (e.key == "p" || e.key == "P")
+        fight();
+    }
+    if (e.key == "p" || e.key == "P") {
         Hero.hero.weapon = 2;
+        fight();
+    }
 
-    // Set foe weapon
-    let level = Hero.hero.level;
-    let foeId = levels[level].foe;
-    Foe.setWeapon(foeId);
+    function fight() {
+        // Set foe weapon
+        let level = Hero.hero.level;
+        let foeId = levels[level].foe;
+        Foe.setWeapon(foeId);
 
-    // Kontrollera klunsen
-    if (Foe.foes[foeId].kluns < 5 && Hero.hero.kluns < 5) {
-        checkKluns(foeId);
-        updateMatch(foeId);
-    } else {
-        console.log("Någon har vunnit");
+        // Kontrollera klunsen
+        if (Foe.foes[foeId].kluns < 5 && Hero.hero.kluns < 5) {
+            checkKluns(foeId);
+            updateMatch(foeId);
+        } else {
+            console.log("Någon har vunnit");
+        }
     }
 }
 
